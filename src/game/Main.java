@@ -25,6 +25,13 @@ public class Main {
             System.out.print("Напасть на " + slime.getName() + " ?");
             String act = scanner.nextLine();
             act.toLowerCase();
+
+            if (act.equals("yes")||(act.equals("y"))){
+                slime.setHp(slime.getHp()-1);
+            } else {
+                System.out.println("Игра окончена!");
+                overGame = true;
+            }
         }
     }
 
@@ -33,5 +40,8 @@ public class Main {
         System.out.println(name2.getName() + " жизни: " + name2.getHp());
     }
 
+    static void hitpoint(){
+
+    }
 
 }

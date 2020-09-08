@@ -15,16 +15,17 @@ public class Main {
         PersonUser person = new PersonUser(nameUser, 100);
         Mob slime = new Mob("Слизь", 20);
 
-        /*System.out.print("Ударить: " + slime.getName());
-        String act = scanner.nextLine();
-        act.toLowerCase();
 
-        if (act.equals("yes") || act.equals("y")){
-
+        boolean overGame = false;
+        while (!overGame) {
+            display(person, slime);
+            if (person.getHp() <= 0){
+                overGame = true;
+            }
+            System.out.print("Напасть на " + slime.getName() + " ?");
+            String act = scanner.nextLine();
+            act.toLowerCase();
         }
-
-         */
-        display(person,slime);
     }
 
     static void display(PersonUser name1,Mob name2){

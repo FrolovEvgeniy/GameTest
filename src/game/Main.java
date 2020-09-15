@@ -8,40 +8,42 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Map map = new Map();
+        boolean gameOver = true;
+        String act;
 
-        System.out.print("Назавите ваше имя: ");
-        String nameUser = scanner.nextLine();
+        map.getLoc();
 
-        PersonUser person = new PersonUser(nameUser, 100);
-        Mob slime = new Mob("Слизь", 20);
-
-
-        boolean overGame = false;
-        while (!overGame) {
-            display(person, slime);
-            if (person.getHp() <= 0){
-                overGame = true;
-            }
-            System.out.print("Напасть на " + slime.getName() + " ?");
-            String act = scanner.nextLine();
-            act.toLowerCase();
-
-            if (act.equals("yes")||(act.equals("y"))){
-                slime.setHp(slime.getHp()-1);
-            } else {
-                System.out.println("Игра окончена!");
-                overGame = true;
+        while (gameOver){
+            act  = scanner.nextLine();
+            if (map.tut == "Поле") {
+                switch (act) {
+                    case "Город":
+                        map.getCity();
+                        break;
+                    case "Пещера":
+                        map.getCave();
+                        break;
+                    default:
+                        gameOver = false;
+                }
+            } else if (map.tut == "Город"){
+                switch (act){
+                    case "Выход из города":
+                        map.getLoc();
+                        break;
+                    default:
+                        gameOver = false;
+                }
+            } else if (map.tut == "Пещера"){
+                switch (act){
+                    case "Выход из пещеры":
+                        map.getLoc();
+                        break;
+                    default:
+                        gameOver = false;
+                }
             }
         }
     }
-
-    static void display(PersonUser name1,Mob name2){
-        System.out.println(name1.getName() + " жизни: " + name1.getHp());
-        System.out.println(name2.getName() + " жизни: " + name2.getHp());
-    }
-
-    static void hitpoint(){
-
-    }
-
 }
